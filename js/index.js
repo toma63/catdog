@@ -10,6 +10,10 @@ toggleButton.addEventListener("click", () => {
     } else {
         catdog = "cat";
     }
+    // reset the heading
+    detailHeading.innerText = `A cute ${catdog} picture`;
+    // hide the details
+    selected.hidden = true;
     // re-fetch the inamge set here
     imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9`;
     fetchImages();
