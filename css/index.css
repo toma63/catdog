@@ -4,8 +4,19 @@
 #caption {
     font-size: x-large;
 }
+#images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+}
 button {
     margin: 1em;
     background-color: blueviolet;
     border-radius: 0.8em;
 }
+img {
+    object-fit: cover;
+    width: 200px; /* Set the desired width */
+    height: 200px; /* Set the desired height */
+    margin: 10px;
+  }
