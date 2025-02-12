@@ -3,7 +3,7 @@ const selected = document.getElementById('selected');
 const detailList = document.getElementById('detail-list');
 const detailHeading = document.getElementById('detail-heading');
 const toggleButton = document.getElementById("toggle")
-let imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9`;
+let imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9&has_breeds=1`;
 toggleButton.addEventListener("click", () => {
     if (catdog == "cat") {
         catdog = "dog";
@@ -15,7 +15,7 @@ toggleButton.addEventListener("click", () => {
     // hide the details
     selected.hidden = true;
     // re-fetch the inamge set here
-    imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9`;
+    imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9&has_breeds=1`;
     fetchImages();
 });
 
