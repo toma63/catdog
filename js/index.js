@@ -1,6 +1,7 @@
 let catdog = "cat"; // selects type of pet to fetch
 const selected = document.getElementById('selected');
 const detailList = document.getElementById('detail-list');
+const detailHeading = document.getElementById('detail-heading');
 const toggleButton = document.getElementById("toggle")
 let imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9`;
 toggleButton.addEventListener("click", () => {
@@ -53,6 +54,7 @@ async function displayImageDetails(petID) {
     try {
         // clear the details list
         detailList.innerHTML = '';
+        detailHeading.innerText = `A cute ${catdog} picture`;
 
         // fetch details for the selected pet
         const response = await fetch(`https://api.the${catdog}api.com/v1/images/${petID}`);
@@ -74,9 +76,13 @@ async function displayImageDetails(petID) {
                     else {
                         throw new Error('Unexpected detail format');
                     }
-                }
-                else {
-                    detailText = detail;
+                } else if (detailKey === 'id') {
+                    continue;
+                } else if (detailKey === 'name') {
+                    detailHeading.innerText = detail;
+                    continue;
+                } else {
+                    detailText = `${detailKey}: ${detail}`;
                 }
                 let detailElt = document.createElement('li');
                 detailElt.innerText = detailText;
