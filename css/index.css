@@ -1,7 +1,7 @@
 #selector {
     display: flex;
 }
-#toggle {
+button {
     padding: 0.5em;
     background-color: blueviolet;
     border-radius: 0.8em;
