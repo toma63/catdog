@@ -1,8 +1,11 @@
 #selector {
     display: flex;
 }
+#caption {
+    font-size: x-large;
+}
 button {
-    padding: 0.5em;
+    margin: 1em;
     background-color: blueviolet;
     border-radius: 0.8em;
 }
