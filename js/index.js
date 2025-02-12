@@ -51,6 +51,10 @@ async function fetchImages() {
 // Unhide the selected container and sisplay it in there
 async function displayImageDetails(petID) {
     try {
+        // clear the details list
+        detailList.innerHTML = '';
+
+        // fetch details for the selected pet
         const response = await fetch(`https://api.the${catdog}api.com/v1/images/${petID}`);
         
         if (!response.ok) {
@@ -94,8 +98,6 @@ async function displayImageDetails(petID) {
 const doneButton = document.getElementById('done-button');
 doneButton.addEventListener('click', () => {
     selected.hidden = true;
-    // clear the details list
-    detailList.innerHTML = '';
 });
 
 
