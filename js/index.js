@@ -76,7 +76,7 @@ async function displayImageDetails(petID) {
                     else {
                         throw new Error('Unexpected detail format');
                     }
-                } else if (detailKey === 'id') {
+                } else if ((detailKey === 'id') || detailKey === 'reference_image_id') {
                     continue;
                 } else if (detailKey === 'name') {
                     detailHeading.innerText = detail;
