@@ -3,6 +3,7 @@ const selected = document.getElementById('selected');
 const detailList = document.getElementById('detail-list');
 const detailHeading = document.getElementById('detail-heading');
 const toggleButton = document.getElementById("toggle")
+const imageContainer = document.getElementById("images");
 let imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9&has_breeds=1`;
 toggleButton.addEventListener("click", () => {
     if (catdog == "cat") {
@@ -19,6 +20,16 @@ toggleButton.addEventListener("click", () => {
     fetchImages();
 });
 
+// create a single event listener for the images container
+// get the id to fetch from the target
+imageContainer.addEventListener('click', (event) => {
+    if (event.target && event.target.classList.contains('clickable')) {
+        console.log('Clicked element:', event.target);
+        // Get the id and do a second fetch
+        const petID = event.target.getAttribute('id');
+        displayImageDetails(petID);
+    }
+});
 
 // get a set of random pictures from the cat or dog api
 async function fetchImages() {
@@ -32,7 +43,6 @@ async function fetchImages() {
         let images = await response.json();
         console.log("Image list: ", images);
 
-        const imageContainer = document.getElementById("images");
         // remove previous content
         imageContainer.innerHTML = '';
         for (let image of images) {
@@ -43,7 +53,8 @@ async function fetchImages() {
             imgElt.setAttribute('width', image.width);
             imgElt.setAttribute('height', image.height);
             imgElt.setAttribute('alt', `${catdog}image${petID}`);
-            imgElt.addEventListener("click", () => { displayImageDetails(petID) });
+            imgElt.setAttribute('id', petID);
+            imgElt.classList.add('clickable');
             imageContainer.appendChild(imgElt);
         }
     } 
