@@ -8,8 +8,10 @@ let imageSetURL = `https://api.the${catdog}api.com/v1/images/search?limit=9&has_
 toggleButton.addEventListener("click", () => {
     if (catdog == "cat") {
         catdog = "dog";
+        toggleButton.innerText = 'I Prefer Cats';
     } else {
         catdog = "cat";
+        toggleButton.innerText = 'I Prefer Dogs';
     }
     // reset the heading
     detailHeading.innerText = `A cute ${catdog} picture`;
